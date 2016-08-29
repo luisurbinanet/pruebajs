@@ -5,7 +5,7 @@
  *
  */
 
-var Calendar = function(divId) {
+var Calendar = function(divId, yy, mm, dd) {
 
     this.divId = divId; 
 
@@ -16,8 +16,8 @@ var Calendar = function(divId) {
     this.Months = ['January', 'Febrary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octuber', 'November', 'December' ];
 
     // Set the current month, year
-    this.dateOrigin = new Date() ;
-    this.dateFinish = new Date() ;
+    this.dateOrigin = new Date( yy, mm - 1, dd ); ;
+    this.dateFinish = new Date( yy, mm - 1, dd ); ;
     
     this.CurrentMonth = this.dateOrigin.getMonth() ;
     this.CurrentYear = this.dateOrigin.getFullYear();

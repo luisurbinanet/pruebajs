@@ -10,8 +10,6 @@ function makeMyCalendars(){
     // Clean the calendar dashboard
     document.getElementById("divCalendars").innerHTML = "";
     
-    var c = new Calendar("divCalendars");
-    
     var dInputDate = document.getElementById('dInitDate').value ;
 
     var nDaysToShow = parseInt( document.getElementById( 'nDaysToShow' ).value );
@@ -21,36 +19,37 @@ function makeMyCalendars(){
     var mm = dInputDate.substr(5, 2) ;
     var dd = dInputDate.substr(8, 2) ;
     
-    // var dateOrigin = new Date( nDaysToShow );
-    //var dateOrigin = new Date( yy, mm - 1, dd );
-    //var dateFinish = new Date ( dateOrigin );
+    var c = new Calendar("divCalendars", yy, mm, dd);
     
-    c.dateOrigin = new Date( yy, mm - 1, dd );
     c.dateFinish.setDate( c.dateOrigin.getDate() + nDaysToShow );
-
-    // dateFinish.setDate(dateOrigin.getDate() + nDaysToShow ) ;
-
-    var calendars = c.dateFinish.getMonth() - c.dateOrigin.getMonth() + 1 ;    
+    
+    if (c.dateFinish.getFullYear() > c.dateOrigin.getFullYear() ) {
+        calendars = ( 12 - c.dateOrigin.getMonth() ) + c.dateFinish.getMonth() + 1; 
+    } else {
+        calendars = c.dateFinish.getMonth() - c.dateOrigin.getMonth() + 1 ;        
+    }
+    
 /** */
             
             console.log( 'Fecha Origen ' + c.dateOrigin.toLocaleDateString() );
             console.log( 'dd ' + dd + ' mm ' + mm + ' yy ' + yy );
             console.log( 'Fecha Final ' + c.dateFinish.toLocaleDateString() );
             console.log( 'Nro de Dias ' + nDaysToShow );
-            console.log( 'Calendarios a Crear ' + calendars );
+            console.log( 'Calendarios ' + calendars );
+            console.log( 'Mes Actual ' + c.CurrentMonth +1 );
             
 /**/
 
     c.showCurrent();
     
-    if( calendars > 1){
+    if( c.dateFinish.getMonth() != c.dateOrigin.getMonth() ){
         var i=1;
         do {
 
-//            console.log( 'Calendario ' + i );
+            console.log( 'Calendario ' + c.CurrentMonth + ' / ' + c.CurrentYear  );
             c.nextMonth();
 
             i++;
-        }while(i <= calendars - 1 );                
+       }while(i <= calendars - 1 );
     }
 }
