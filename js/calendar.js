@@ -15,16 +15,13 @@ var Calendar = function(divId) {
     // Months
     this.Months = ['January', 'Febrary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octuber', 'November', 'December' ];
 
-    var dInputDate = document.getElementById('dInitDate').value ;
-
-    // console.log( 'Fecha Calendario a crear ' + dInputDate ) ;
-    
     // Set the current month, year
-    var d = new Date( dInputDate );
+    this.dateOrigin = new Date() ;
+    this.dateFinish = new Date() ;
     
-    this.CurrentMonth = d.getMonth() ;
-    this.CurrentYear = d.getFullYear();
-
+    this.CurrentMonth = this.dateOrigin.getMonth() ;
+    this.CurrentYear = this.dateOrigin.getFullYear();
+    
 }
 
 // Goes to next month

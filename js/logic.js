@@ -10,6 +10,8 @@ function makeMyCalendars(){
     // Clean the calendar dashboard
     document.getElementById("divCalendars").innerHTML = "";
     
+    var c = new Calendar("divCalendars");
+    
     var dInputDate = document.getElementById('dInitDate').value ;
 
     var nDaysToShow = parseInt( document.getElementById( 'nDaysToShow' ).value );
@@ -20,22 +22,24 @@ function makeMyCalendars(){
     var dd = dInputDate.substr(8, 2) ;
     
     // var dateOrigin = new Date( nDaysToShow );
-    var dateOrigin = new Date( yy, mm - 1, dd );
-    var dateFinish = new Date ( dateOrigin );
+    //var dateOrigin = new Date( yy, mm - 1, dd );
+    //var dateFinish = new Date ( dateOrigin );
+    
+    c.dateOrigin = new Date( yy, mm - 1, dd );
+    c.dateFinish.setDate( c.dateOrigin.getDate() + nDaysToShow );
 
-    dateFinish.setDate(dateOrigin.getDate() + nDaysToShow ) ;
+    // dateFinish.setDate(dateOrigin.getDate() + nDaysToShow ) ;
 
-    var calendars = dateFinish.getMonth() - dateOrigin.getMonth() + 1 ;    
+    var calendars = c.dateFinish.getMonth() - c.dateOrigin.getMonth() + 1 ;    
 /** */
             
-            console.log( 'Fecha Origen ' + dateOrigin.toLocaleDateString() );
+            console.log( 'Fecha Origen ' + c.dateOrigin.toLocaleDateString() );
             console.log( 'dd ' + dd + ' mm ' + mm + ' yy ' + yy );
-            console.log( 'Fecha Final ' + dateFinish.toLocaleDateString() );
+            console.log( 'Fecha Final ' + c.dateFinish.toLocaleDateString() );
             console.log( 'Nro de Dias ' + nDaysToShow );
             console.log( 'Calendarios a Crear ' + calendars );
             
 /**/
-    var c = new Calendar("divCalendars");
 
     c.showCurrent();
     
