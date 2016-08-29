@@ -43,7 +43,7 @@ function makeMyCalendars(){
         var i=1;
         do {
 
-            console.log( 'Calendario ' + i );
+//            console.log( 'Calendario ' + i );
             c.nextMonth();
 
             i++;

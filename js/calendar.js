@@ -67,8 +67,11 @@ Calendar.prototype.showMonth = function(y, m) {
         // Last day of the previous month
         , lastDayOfLastMonth = m == 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
 
-
-    var html = '<table>';
+    var dowStyle = '' ;
+    var html = '';
+    
+    html += '<div class="calendar">';
+    html += '<table>';
 
     // Write selected month and year
     html += '<tr><td colspan="7">' + this.Months[m] + ' - ' + y + '</td></tr>';
@@ -100,9 +103,16 @@ Calendar.prototype.showMonth = function(y, m) {
                 k++;
             }
         }
+        
+        // Applies different styles for workDays or weekEnds
+        if ( dow == 0 || dow== 6 ) {
+            dowStyle = "weekEnd";
+        } else {
+            dowStyle = "workDay";
+        }
 
         // Write the current day in the loop
-        html += '<td>' + i + '</td>';
+        html += '<td class="'+dowStyle+'">' + i + '</td>';
 
         // If Saturday, closes the row
         if ( dow == 6 ) {
@@ -123,6 +133,7 @@ Calendar.prototype.showMonth = function(y, m) {
 
     // Closes table
     html += '</table>';
+    html += '</div>';
 
     // Write HTML to the div
     document.getElementById(this.divId).innerHTML += html;

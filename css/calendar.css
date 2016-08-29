@@ -3,7 +3,22 @@
  *
  *
  **/
+td {
+    text-align: center;
+}
+td.not-current {
+    color: grey;
+    background-color: grey;
+}
 
-		td.not-current {
-			color: #777;
-		}
+td.weekEnd {
+    background-color: yellow;
+    color: darkslategrey;
+}
+td.workDay {
+    background-color: darkseagreen;
+
+}
+.calendar {
+    display: block;
+}
