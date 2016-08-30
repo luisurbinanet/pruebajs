@@ -30,6 +30,7 @@ a.	A list of any requirements you could not implement.
 
 b.	Bugs you’ve identified but didn’t have time to fix.
         A.  The DaysToShow field, acept negative numbers and calculate an invalid numbers of calendars to draw.
+        B.  Hide a days outside of range a days defined in Date Origin and Day to Finish.
     
 c.	Things you would do if you had more time to complete the task.
         A.  Don't give me time to implement a comunication with a Holiday WebService.
